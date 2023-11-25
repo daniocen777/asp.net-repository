@@ -4,3 +4,7 @@
 	dotnet new webapi
 # Ejecutar API
 	dotnet run
+# Migrar (cada vez que se cambia la BD)
+	add-migration [DescriptionCamelCase]
+# Crear la BD y tablas
+	update-database
