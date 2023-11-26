@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebApiExample.Services;
 
 namespace WebApiExample.Controllers
 {
@@ -10,10 +7,18 @@ namespace WebApiExample.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly IUserDataService _userDataService;
+
+        // Inyectar servicios en el constructor
+        public UserController(IUserDataService userDataService)
+        {
+            _userDataService = userDataService;
+        }
+
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _userDataService.GetValues();
         }
 
         [HttpGet("{id}")]
