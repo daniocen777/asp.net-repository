@@ -8,3 +8,5 @@
 	add-migration [DescriptionCamelCase]
 # Crear la BD y tablas
 	update-database
+# Borrar BD
+	drop-database
