@@ -1,0 +1,74 @@
+﻿<!-- FORMULARIO GENERICO PARA CREAR Y EDITAR PAIS -->
+<!-- Inyecciones -->
+@inject SweetAlertService sweetAlertService
+<!-- Mantener los datos del formulario en memoria -->
+<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
+
+<EditForm EditContext="_editContext" OnValidSubmit="OnValidSubmit">
+    <!-- Para que tome las validaciones de DataAnotation de la clase Cpuntry (etiquetas) -->
+    <DataAnnotationsValidator />
+    <div class="mb-3">
+        <label>País</label>
+        <div class="">
+            <InputText class="form-control" @bind-Value="@Country.Name" />
+            <!-- Mensaje de error -->
+            <ValidationMessage For="@(() => Country.Name)" />
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Guardar Cambios</button>
+    <button class="btn btn-success" @onclick="ReturnAction">Regresar</button>
+</EditForm>
+
+@code {
+    // Contexto para Mantener los datos del formulario en memoria
+    private EditContext _editContext = null!;
+
+    [Parameter]
+    [EditorRequired]
+    public Country Country { get; set; } = null!;
+
+    // Para el boton Submit
+    [Parameter]
+    [EditorRequired]
+    public EventCallback OnValidSubmit { get; set; }
+
+    // Para el boton de regreso
+    [Parameter]
+    [EditorRequired]
+    public EventCallback ReturnAction { get; set; }
+
+    // Otras propiedades
+    public bool FormPostedSuccessfully { get; set; }
+
+    // Funcion que permite manejar el contexto
+    protected override void OnInitialized()
+    {
+        _editContext = new(Country);
+    }
+
+    private async Task OnBeforeInternalNavigation(LocationChangingContext context)
+    {
+        var formWasModified = _editContext.IsModified();
+        if (!formWasModified || FormPostedSuccessfully)
+        {
+            return;
+        }
+
+        // Usuario no termino de llenar formulario
+        var result = await sweetAlertService.FireAsync(new SweetAlertOptions
+        {
+            Title = "Confirmación",
+            Text = "¿Deseas abandonar la página y perder los cambios?",
+            Icon = SweetAlertIcon.Warning,
+            ShowCancelButton = true,
+            CancelButtonText = "No",
+            ConfirmButtonText = "Sí"
+        });
+        var confirm = !string.IsNullOrEmpty(result.Value);
+        if (confirm)
+        {
+            return;
+        }
+        context.PreventNavigation();
+    }
+}

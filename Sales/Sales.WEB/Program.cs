@@ -1,3 +1,4 @@
+using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Sales.WEB;
@@ -12,5 +13,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https:/
 // => AddTrasient<>
 // => AddSingleton<>
 builder.Services.AddScoped<IRepository, Repository>(); // crear nueva instancia por inyeccion
+// Alertas
+builder.Services.AddSweetAlert2();
 
 await builder.Build().RunAsync();

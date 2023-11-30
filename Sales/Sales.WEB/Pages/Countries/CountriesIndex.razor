@@ -1,43 +1,39 @@
 ﻿@page "/countries"
 <!-- Colocar las importaciones en _import.razor -->
-
- <!-- @using Sales.WEB.Repositories
-    @using Sales.Shared.Entities
- --> 
-
+<!-- @using Sales.WEB.Repositories
+   @using Sales.Shared.Entities
+-->
 @inject IRepository repository
 
 <h3>Países</h3>
+<a class="btn btn-primary" href="/countries/create">Nuevo País</a>
 
-@if (Countries is null)
-{
-    <p>Cargando...</p>
-} else
-{
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th></th>
-                <th>País</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var country in Countries)
-            {
+<GenericList MyList="Countries">
+    <Body>
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>
-                        <a class="btn btn-warning">Editar</a>
-                        <button class="btn btn-danger">Borrar</button>
-                    </td>
-                    <td>
-                        @country.Name
-                    </td>
+                    <th></th>
+                    <th>País</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-
-}
+            </thead>
+            <tbody>
+                @foreach (var country in Countries!)
+                {
+                    <tr>
+                        <td>
+                            <a class="btn btn-warning">Editar</a>
+                            <button class="btn btn-danger">Borrar</button>
+                        </td>
+                        <td>
+                            @country.Name
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </Body>
+</GenericList>
 
 @code {
     // Referenciar las clases (otro proyecto) en dependencies

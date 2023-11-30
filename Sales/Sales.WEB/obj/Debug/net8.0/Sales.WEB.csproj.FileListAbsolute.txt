@@ -1039,3 +1039,8 @@ D:\projects\asp.net_repository\Sales\Sales.WEB\bin\Debug\net8.0\Sales.Shared.pdb
 D:\projects\asp.net_repository\Sales\Sales.WEB\obj\Debug\net8.0\webcil\Sales.Shared.wasm
 D:\projects\asp.net_repository\Sales\Sales.WEB\obj\Debug\net8.0\compressed\0iozpkrdf4.gz
 D:\projects\asp.net_repository\Sales\Sales.WEB\obj\Debug\net8.0\compressed\h38wzxws5u.gz
+D:\projects\asp.net_repository\Sales\Sales.WEB\bin\Debug\net8.0\wwwroot\_framework\CurrieTechnologies.Razor.SweetAlert2.wasm
+D:\projects\asp.net_repository\Sales\Sales.WEB\bin\Debug\net8.0\wwwroot\_framework\CurrieTechnologies.Razor.SweetAlert2.wasm.gz
+D:\projects\asp.net_repository\Sales\Sales.WEB\bin\Debug\net8.0\CurrieTechnologies.Razor.SweetAlert2.dll
+D:\projects\asp.net_repository\Sales\Sales.WEB\obj\Debug\net8.0\webcil\CurrieTechnologies.Razor.SweetAlert2.wasm
+D:\projects\asp.net_repository\Sales\Sales.WEB\obj\Debug\net8.0\compressed\72upxs8cxt.gz
