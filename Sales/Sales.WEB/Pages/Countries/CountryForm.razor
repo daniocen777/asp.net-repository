@@ -42,6 +42,7 @@
 
     // Funcion que permite manejar el contexto
     protected override void OnInitialized()
+
     {
         _editContext = new(Country);
     }
@@ -56,14 +57,15 @@
 
         // Usuario no termino de llenar formulario
         var result = await sweetAlertService.FireAsync(new SweetAlertOptions
-        {
-            Title = "Confirmación",
-            Text = "¿Deseas abandonar la página y perder los cambios?",
-            Icon = SweetAlertIcon.Warning,
-            ShowCancelButton = true,
-            CancelButtonText = "No",
-            ConfirmButtonText = "Sí"
-        });
+            {
+                Title = "Confirmación",
+                Text = "¿Deseas abandonar la página y perder los cambios?",
+                Icon = SweetAlertIcon.Warning,
+                ShowCancelButton = true,
+                CancelButtonText = "No",
+                ConfirmButtonText = "Sí"
+            });
+
         var confirm = !string.IsNullOrEmpty(result.Value);
         if (confirm)
         {

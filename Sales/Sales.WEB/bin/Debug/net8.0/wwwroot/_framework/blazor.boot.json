@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Sales.WEB",
   "resources": {
-    "hash": "sha256-2iwtNhkfeB9MZn0t1RSnBGiaJ3Ucczx4AkNYmH2oxb4=",
+    "hash": "sha256-3CsT2RbenfC7MrC0roCdtxfamhyW4oyDHwPdz5AurmQ=",
     "jsModuleNative": {
       "dotnet.native.8.0.0.n3otl6se9a.js": "sha256-LjLDIz9+J7uuiwMlQ4HbNx2BnSpphOtO2MwkoI28vdI="
     },
@@ -210,11 +210,11 @@
       "netstandard.wasm": "sha256-A0h86SDieTMoU/wU2JTszWCsUmMuguDcbap0b0BzsmI=",
       "System.Private.CoreLib.wasm": "sha256-/0DNIm/T0C07X7Tuz5uR8JvVCoAfEE2MnfPUSjyS9xc=",
       "Sales.Shared.wasm": "sha256-fpyBc1D/y2+cq3EyL9dkhu6Y9BmC+mv68xan4ILwR/8=",
-      "Sales.WEB.wasm": "sha256-hSVpmhPoBGhL15kOBseDvEpPBYaqKaPK2OP8WiPIkmI="
+      "Sales.WEB.wasm": "sha256-s/z04KkBmJrr0/Rq07HYhGpnKdfWwZgHnMCxDxNdXO4="
     },
     "pdb": {
       "Sales.Shared.pdb": "sha256-TbLtQ87NuRipjw2iY9bz8jrsoiBSLgrE5GaBoiwMEnU=",
-      "Sales.WEB.pdb": "sha256-i7ajnlpZpxNaXL9JlUzscmrIG8zj03KJmRn1mWHfC9k="
+      "Sales.WEB.pdb": "sha256-vERJfaxYp2JDfmaRGGheEFi79Ba6LX4TyFr1iSjax2g="
     }
   },
   "cacheBootResources": true,
