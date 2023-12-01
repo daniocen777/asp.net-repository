@@ -37,19 +37,52 @@ namespace Sales.API.Controllers
         [HttpPost]
         public async Task<ActionResult> PostAsync(Country country)
         {
-            // _dataContext.Countries.Add(country);
-            _dataContext.Add(country); // marca en la BD (no commit)
-            await _dataContext.SaveChangesAsync(); // commit
-            return Ok(country);
+            // ctrl + k + s => envolver
+            try
+            {
+                // _dataContext.Countries.Add(country);
+                _dataContext.Add(country); // marca en la BD (no commit)
+                await _dataContext.SaveChangesAsync(); // commit
+                return Ok(country);
+            }
+            catch (DbUpdateConcurrencyException dbUpdateConcurrencyException)
+            {
+                if (dbUpdateConcurrencyException.InnerException!.Message.Contains("duplicate"))
+                {
+                    return BadRequest("Ya existe un país con el mismo nombre");
+                }
+
+                return BadRequest(dbUpdateConcurrencyException.Message);
+            }
+            catch (Exception exeption)
+            {
+                return BadRequest(exeption.Message);
+            }
         }
 
         [HttpPut]
         public async Task<ActionResult> PutAsync(Country country)
         {
-            // _dataContext.Countries.Add(country);
-            _dataContext.Update(country); // marca en la BD (no commit)
-            await _dataContext.SaveChangesAsync(); // commit
-            return Ok(country);
+            try
+            {
+                // _dataContext.Countries.Add(country);
+                _dataContext.Update(country); // marca en la BD (no commit)
+                await _dataContext.SaveChangesAsync(); // commit
+                return Ok(country);
+            }
+            catch (DbUpdateConcurrencyException dbUpdateConcurrencyException)
+            {
+                if (dbUpdateConcurrencyException.InnerException!.Message.Contains("duplicate"))
+                {
+                    return BadRequest("Ya existe un país con el mismo nombre");
+                }
+
+                return BadRequest(dbUpdateConcurrencyException.Message);
+            }
+            catch (Exception exeption)
+            {
+                return BadRequest(exeption.Message);
+            }
         }
 
         [HttpDelete("{id:int}")]
