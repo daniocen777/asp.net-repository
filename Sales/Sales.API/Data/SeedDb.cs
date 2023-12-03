@@ -16,8 +16,26 @@ namespace Sales.API.Data
         {
             // esto crea la BD y la migra (en vez de realizarlo por comandos en consola) 
             await _context.Database.EnsureCreatedAsync();
-            // Crear pasies
+            // Crear paises
             await CheckCountriesAsync();
+
+            // Crear categorias
+            await CheckCategoriesAsync();
+        }
+
+        private async Task CheckCategoriesAsync()
+        {
+            if (!_context.Categories.Any())
+            {
+                _context.Categories.Add( new Category { Name = "Tecnología" } );
+                _context.Categories.Add(new Category { Name = "Hogar" });
+                _context.Categories.Add(new Category { Name = "Cocina" });
+                _context.Categories.Add(new Category { Name = "Televisores" });
+                _context.Categories.Add(new Category { Name = "Computadoras" });
+                _context.Categories.Add(new Category { Name = "Electrodomésticos" });
+                _context.Categories.Add(new Category { Name = "Videojuegos" });
+                await _context.SaveChangesAsync();
+            }
         }
 
         private async Task CheckCountriesAsync()

@@ -7,9 +7,12 @@ namespace Sales.API.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
+            // TODO: any
         }
 
         public DbSet<Country> Countries { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -17,6 +20,8 @@ namespace Sales.API.Data
             base.OnModelCreating(modelBuilder);
             // Name unico
             modelBuilder.Entity<Country>().HasIndex(x => x.Name).IsUnique();
+
+            modelBuilder.Entity<Category>().HasIndex(x => x.Name).IsUnique();
         }
     }
 }
